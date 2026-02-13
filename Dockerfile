@@ -28,10 +28,10 @@ RUN apt-get update && apt-get install -y \
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 WORKDIR /app
 
-COPY package.json ./
+COPY app/package.json ./package.json
 RUN npm install --omit=dev
 
-COPY server.js ./
+COPY app/src ./src
 
 VOLUME ["/app/.wwebjs_auth", "/app/.wwebjs_cache"]
 EXPOSE 3010
