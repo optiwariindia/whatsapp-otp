@@ -1,0 +1,23 @@
+services:
+  whatsapp-viewer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: whatsapp-viewer
+    ports:
+      - "3010:3010"
+    environment:
+      PORT: "3010"
+      OTP_LENGTH: "6"
+      ALLOW_INSECURE_CALLBACKS: "true"
+      CALLBACK_HMAC_SECRET: "dev-secret"
+      WA_CLIENT_ID: "whatsapp-viewer-service"
+      PUPPETEER_EXECUTABLE_PATH: "/usr/bin/chromium"
+    volumes:
+      - whatsapp_auth:/app/.wwebjs_auth
+      - whatsapp_cache:/app/.wwebjs_cache
+    restart: unless-stopped
+
+volumes:
+  whatsapp_auth:
+  whatsapp_cache:
