@@ -27,6 +27,10 @@ Body:
 - `GET /health/live`
 - `GET /health/ready`
 
+## Invitation preview
+
+- `GET /invitations/mata-ki-chowki` returns a mobile-optimized HTML invitation page themed like a traditional Mata Ki Chowki card.
+
 ## Runtime configuration
 
 The app reads runtime values from process environment variables. In this project, those variables are managed by `docker-compose.yml` only.

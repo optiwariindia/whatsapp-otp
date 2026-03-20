@@ -2,11 +2,13 @@ import express from 'express';
 import { env } from './config/env.js';
 import { PendingVerificationStore } from './store/pendingVerificationStore.js';
 import { createHealthRoutes } from './routes/healthRoutes.js';
+import { createInvitationRoutes } from './routes/invitationRoutes.js';
 import { createVerificationRoutes } from './routes/verificationRoutes.js';
 import { createWhatsAppClient } from './whatsapp/client.js';
 
 const app = express();
 app.use(express.json());
+app.use(createInvitationRoutes());
 
 const state = {
   whatsappReady: false,
